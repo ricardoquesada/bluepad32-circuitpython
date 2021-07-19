@@ -3,13 +3,11 @@
 
 import time
 
-from bluepad32.bluepad32 import Bluepad32
-from bluepad32 import gamepad
-
 import board
 import busio
 from digitalio import DigitalInOut
-from micropython import const
+
+from bluepad32.bluepad32 import Bluepad32
 
 
 class SimpleTest:
@@ -73,7 +71,7 @@ class SimpleTest:
 
             gp = self._gamepad
 
-            if first_time == False:
+            if first_time is False:
                 first_time = True
                 # Prints the entire gamepad state.
                 # This function is used mostly for debug.

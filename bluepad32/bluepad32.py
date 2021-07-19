@@ -57,7 +57,7 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
     """Implement the SPI commands for Bluepad32"""
 
     def __init__(self, *args, **kwargs):
-        super(Bluepad32, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         # callbacks for when a gamepad gets connected / disconnected
         self._on_connect = None
@@ -88,7 +88,6 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
         self._send_command(_GET_GAMEPADS_DATA)
         resp = self._wait_response_cmd(_GET_GAMEPADS_DATA)
 
-        gamepads = []
         connected_gamepads = 0
 
         # Update gamepads state
@@ -128,7 +127,7 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
             if current == prev:
                 continue
 
-            if current is not 0:
+            if current != 0:
                 print("there is a change: new gamepad")
                 self._on_connect(self._gamepads[idx])
             else:
@@ -213,12 +212,12 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
 
     def _check_protocol(self) -> bool:
         resp = self._send_command_get_response(_GET_PROTOCOL_VERSION)
-        hi = resp[0][0]
-        lo = resp[0][1]
-        if hi != _PROTOCOL_VERSION_HI:
+        ver_hi = resp[0][0]
+        ver_lo = resp[0][1]
+        if ver_hi != _PROTOCOL_VERSION_HI:
             print(
                 "ERROR: Invalid protocol version. Expected %d.%d, got: %d.%d"
-                % (_PROTOCOL_VERSION_HI, _PROTOCOL_VERSION_LO, hi, lo)
+                % (_PROTOCOL_VERSION_HI, _PROTOCOL_VERSION_LO, ver_hi, ver_lo)
             )
             return False
         return True
