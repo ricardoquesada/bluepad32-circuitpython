@@ -27,6 +27,7 @@ Implementation Notes
 """
 
 # imports
+from micropython import const
 
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://gitlab.com/ricardoquesada/bluepad32-circuitpython.git"
@@ -57,7 +58,7 @@ MISC_BUTTON_BACK = const(1 << 1)  # AKA: Select, Share, -
 MISC_BUTTON_HOME = const(1 << 2)  # AKA: Start, Options, +
 
 
-class Gamepad:
+class Gamepad:  # pylint: disable=too-many-public-methods
     """Implement gamepad abstraction"""
 
     def __init__(self, bp32, idx: int, state: dict):
@@ -106,78 +107,109 @@ class Gamepad:
         return self._bp32.set_gamepad_rumble(self._idx, force, duration)
 
     def set_state(self, state):
+        """Set the gamepad state"""
         self._state = state
 
     @property
     def buttons(self) -> int:
+        """Return the a bitmaks that represents the buttons state"""
         return self._state["buttons"]
 
     @property
     def misc_buttons(self) -> int:
+        """Return the a bitmaks that represents the 'misc buttons' state"""
         return self._state["misc_buttons"]
 
     @property
     def axis_x(self) -> int:
+        """Return the value of Axis X.
+
+        Value goes from -511 to 512.
+        """
         return self._state["axis_x"]
 
     @property
     def axis_y(self) -> int:
+        """Return the value of Axis Y.
+
+        Value goes from -511 to 512.
+        """
         return self._state["axis_y"]
 
     @property
     def axis_rx(self) -> int:
+        """Return the value of the right Axis X.
+
+        Value goes from -511 to 512.
+        """
         return self._state["axis_rx"]
 
     @property
     def axis_ry(self) -> int:
+        """Return the value of the right Axis Y.
+
+        Value goes from -511 to 512.
+        """
         return self._state["axis_ry"]
 
     @property
     def dpad(self) -> int:
-        return self._dpad
+        """Return the DPAD state"""
+        return self._state["dpad"]
 
     @property
-    def a(self) -> int:
+    def button_a(self) -> int:
+        """Return whether button A is pressed"""
         return self._state["buttons"] & BUTTON_A
 
     @property
-    def b(self) -> int:
+    def button_b(self) -> int:
+        """Return whether button B is pressed"""
         return self._state["buttons"] & BUTTON_B
 
     @property
-    def x(self) -> int:
+    def button_x(self) -> int:
+        """Return whether button X is pressed"""
         return self._state["buttons"] & BUTTON_X
 
     @property
-    def y(self) -> int:
+    def button_y(self) -> int:
+        """Return whether button Y is pressed"""
         return self._state["buttons"] & BUTTON_Y
 
     @property
-    def l1(self) -> int:
+    def button_l1(self) -> int:
+        """Return whether button L1 is pressed"""
         return self._state["buttons"] & BUTTON_L1
 
     @property
-    def l2(self) -> int:
+    def button_l2(self) -> int:
+        """Return whether button L2 is pressed"""
         return self._state["buttons"] & BUTTON_L2
 
     @property
-    def r1(self) -> int:
+    def button_r1(self) -> int:
+        """Return whether button R1 is pressed"""
         return self._state["buttons"] & BUTTON_R1
 
     @property
-    def r2(self) -> int:
+    def button_r2(self) -> int:
+        """Return whether button R2 is pressed"""
         return self._state["buttons"] & BUTTON_R2
 
     @property
-    def thumb_l(self) -> int:
+    def button_thumb_l(self) -> int:
+        """Return whether left thumb buttons is pressed"""
         return self._state["buttons"] & BUTTON_THUMB_L
 
     @property
-    def thumb_r(self) -> int:
+    def button_thumb_r(self) -> int:
+        """Return whether right thumb buttons is pressed"""
         return self._state["buttons"] & BUTTON_THUMB_R
 
     @property
     def type(self) -> int:
+        """Return the gamepad type (AKA model)"""
         return self._state["type"]
 
     def __str__(self):

@@ -35,7 +35,7 @@ import struct
 
 from adafruit_esp32spi import adafruit_esp32spi
 from micropython import const
-from bluepad32.gamepad import Gamepad
+from bluepad32.gamepad import Gamepad  # pylint: disable=no-name-in-module
 
 
 # Nina-fw commands stopped at 0x50. Bluepad32 extensions start at 0x60. See:

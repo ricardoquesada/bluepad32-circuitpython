@@ -42,7 +42,7 @@ class SimpleTest:
         self._bp32.setup_callbacks(self.on_connect, self.on_disconnect)
 
         # Optionally, to enable UART logging in the ESP32
-        # self._bp32.set_debug(1)
+        # self._bp32.set_esp_debug(1)
 
         # Delete Bluetooth stored keys. Might make connection easier (or more difficult).
         # self._bp32.forget_bluetooth_keys()
@@ -55,7 +55,7 @@ class SimpleTest:
         self._gamepad = gp
 
     def on_disconnect(self, gp):
-        print("on_disconnect")
+        print("on_disconnect: ", gp)
         self._gamepad = None
 
     def loop(self):
@@ -79,17 +79,17 @@ class SimpleTest:
 
                 gp.set_lightbar_color(color)
 
-            if gp.a:  # Button A pressed ?
+            if gp.button_a:  # button A pressed ?
                 # Shuffle colors. "random.shuffle" not preset in CircuitPython
                 color = (color[2], color[0], color[1])
                 gp.set_lightbar_color(color)
 
-            if gp.b:  # Button B pressed ?
+            if gp.button_b:  # Button B pressed ?
                 gp.set_player_leds(players_led)
                 players_led += 1
                 players_led &= 0x0F
 
-            if gp.x:  # Button X pressed ?
+            if gp.button_x:  # Button X pressed ?
                 force = 128  # 0-255
                 duration = 10  # 0-255
                 gp.set_rumble(force, duration)
