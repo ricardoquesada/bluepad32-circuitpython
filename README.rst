@@ -15,12 +15,13 @@ Introduction
 .. image:: img/bluepad32-circuitpython-logo.png
     :alt: Logo
 
-Bluetooth gamepad support for CircuitPython. Requires boards with an Airlift (ESP32) module.
-The companion firmware for the ESP32 is `available on Gitlab <https://gitlab.com/ricardoquesada/bluepad32>`_.
+Bluetooth gamepad support for CircuitPython. Requires boards with an Airlift (ESP32) module,
+like the `Adafruit MatrixPortal M4 <https://www.adafruit.com/product/4745>`_.
 
 
 Dependencies
-=============
+============
+
 This driver depends on:
 
 * `Adafruit ESP32SPI <https://github.com/adafruit/Adafruit_CircuitPython_ESP32SPI>`_
@@ -30,6 +31,32 @@ This is easily achieved by downloading
 `the Adafruit library and driver bundle <https://circuitpython.org/libraries>`_
 or individual libraries can be installed using
 `circup <https://github.com/adafruit/circup>`_.
+
+How does it work
+================
+
+As mentioned above, only boards with the Airlift (ESP32) co-processor are supported.
+This is because the project is split in two:
+
+* "Bluepad32 library for CircuitPython", runs on the main processor: "B"
+* "Bluepad32 firmware", runs on the Airlift co-processor: "C"
+
+.. image:: img/bluepad32-how-does-it-work.png
+    :alt: How does it work
+
+The gamepads (A), using Bluetooth, connect to the Airlift co-processor (B).
+
+And Airlift (B) sends the gamepad data to the main processor (C). In this case the
+main processor is the SAMD 51, but it could be different on other boards.
+
+So, in order to use the library you have to flash the "Bluepad32 firmware" on Airlift.
+This is a simple step that needs to be done just once, and can be undone at any time.
+Info about Bluepad32 firmware is avaiable here:
+
+
+* Bluepad32 firmware doc: https://gitlab.com/ricardoquesada/bluepad32/-/blob/master/docs/plat_airlift.md
+* Download: https://gitlab.com/ricardoquesada/bluepad32/-/releases
+
 
 Installing to a Connected CircuitPython Device with Circup
 ==========================================================
@@ -57,8 +84,10 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
-.. todo:: Add a quick, simple example. It and other examples should live in the
-examples folder and be included in docs/examples.rst.
+A complete working example is available here:
+
+* `bluepad32_simpletest.py <examples/bluepad32_simpletest.py>`_
+
 
 Contributing
 ============
