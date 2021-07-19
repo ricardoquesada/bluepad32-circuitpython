@@ -38,8 +38,8 @@ How does it work
 As mentioned above, only boards with the Airlift (ESP32) co-processor are supported.
 This is because the project is split in two:
 
-* "Bluepad32 library for CircuitPython", runs on the main processor: "B"
-* "Bluepad32 firmware", runs on the Airlift co-processor: "C"
+* "Bluepad32 library for CircuitPython", runs on the main processor: "C"
+* "Bluepad32 firmware", runs on the Airlift co-processor: "B"
 
 .. image:: img/bluepad32-how-does-it-work.png
     :alt: How does it work
