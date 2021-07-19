@@ -15,7 +15,7 @@ Introduction
 .. image:: img/bluepad32-circuitpython-logo.png
     :alt: Logo
 
-Bluetooth gamepad support for CircuitPython. Requires boards with an Airlift (ESP32) module,
+Bluetooth gamepad support for CircuitPython. Requires boards with an AirLift (ESP32) module,
 like the `Adafruit MatrixPortal M4 <https://www.adafruit.com/product/4745>`_.
 
 
@@ -35,21 +35,21 @@ or individual libraries can be installed using
 How does it work
 ================
 
-As mentioned above, only boards with the Airlift (ESP32) co-processor are supported.
+As mentioned above, only boards with the AirLift (ESP32) co-processor are supported.
 This is because the project is split in two:
 
 * "Bluepad32 library for CircuitPython", runs on the main processor: "C"
-* "Bluepad32 firmware", runs on the Airlift co-processor: "B"
+* "Bluepad32 firmware", runs on the AirLift co-processor: "B"
 
 .. image:: img/bluepad32-how-does-it-work.png
     :alt: How does it work
 
-The gamepads (A), using Bluetooth, connect to the Airlift co-processor (B).
+The gamepads (A), using Bluetooth, connect to the AirLift co-processor (B).
 
-And Airlift (B) sends the gamepad data to the main processor (C). In this case the
+And AirLift (B) sends the gamepad data to the main processor (C). In this case the
 main processor is the SAMD 51, but it could be different on other boards.
 
-So, in order to use the library you have to flash the "Bluepad32 firmware" on Airlift.
+So, in order to use the library you have to flash the "Bluepad32 firmware" on AirLift.
 This is a simple step that needs to be done just once, and can be undone at any time.
 Info about Bluepad32 firmware is avaiable here:
 
