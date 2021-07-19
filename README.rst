@@ -1,9 +1,15 @@
 Introduction
 ============
 
+
 .. image:: https://github.com/ricardoquesada/bluepad32-circuitpython/workflows/Build%20CI/badge.svg
     :target: https://github.com/ricardoquesada/bluepad32-circuitpython/actions/
     :alt: Build Status
+
+
+.. image:: https://img.shields.io/discord/775177861665521725.svg
+    :target: https://discord.gg/r5aMn6Cw5q
+    :alt: Discord
 
 
 .. image:: img/bluepad32-circuitpython-logo.png
