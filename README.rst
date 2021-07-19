@@ -1,30 +1,23 @@
 Introduction
 ============
 
-
-
-.. image:: https://img.shields.io/discord/327254708534116352.svg
-    :target: https://adafru.it/discord
-    :alt: Discord
-
-
-.. image:: https://github.com/ricardoquesada/CircuitPython_Org_bluepad32/workflows/Build%20CI/badge.svg
-    :target: https://github.com/ricardoquesada/CircuitPython_Org_bluepad32/actions
+.. image:: https://github.com/ricardoquesada/bluepad32-circuitpython/workflows/Build%20CI/badge.svg
+    :target: https://github.com/ricardoquesada/bluepad32-circuitpython/actions/
     :alt: Build Status
 
 
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-    :target: https://github.com/psf/black
-    :alt: Code Style: Black
+.. image:: bluepad32-circuitpython-logo.png
+    :alt: Logo
 
-Gamepad support for Airlift-based boards
+Bluetooth gamepad support for CircuitPython. Requires boards with an Airlift (ESP32) module.
+The companion firmware for the ESP32 is `available on Gitlab <https://gitlab.com/ricardoquesada/bluepad32>`_.
 
 
 Dependencies
 =============
 This driver depends on:
 
-* `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
+* `Adafruit ESP32SPI <https://github.com/adafruit/Adafruit_CircuitPython_ESP32SPI>`_
 
 Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
