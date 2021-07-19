@@ -6,7 +6,7 @@ Introduction
     :alt: Build Status
 
 
-.. image:: bluepad32-circuitpython-logo.png
+.. image:: img/bluepad32-circuitpython-logo.png
     :alt: Logo
 
 Bluetooth gamepad support for CircuitPython. Requires boards with an Airlift (ESP32) module.
