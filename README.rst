@@ -19,24 +19,30 @@ Bluetooth gamepad support for CircuitPython. Requires boards with an AirLift (ES
 like the `Adafruit MatrixPortal M4 <https://www.adafruit.com/product/4745>`_.
 
 
-Dependencies
-============
+Supported gamepads
+==================
 
-This driver depends on:
+.. image:: https://lh3.googleusercontent.com/pw/AM-JKLWUZS_vlkMmd3o8EKzXlYCS0uriEW_gXfOoiFqZlABJi_dM1GWYHGafrdMnTP-VHgVdCdVA4pUageZgyI98RH1SHtydac2yyrx_vJVXgWPYBFN-SJoOikdlGuOowPoDqYOwfKU39yketYPJyRJlIPwjEw=-no
+    :alt: Supported gamepads
 
-* `Adafruit ESP32SPI <https://github.com/adafruit/Adafruit_CircuitPython_ESP32SPI>`_
+With this library you can use any modern Bluetooth gamepad in CircuitPython.
+Some of the supported gamepads, but not limited to, are:
 
-Please ensure all dependencies are available on the CircuitPython filesystem.
-This is easily achieved by downloading
-`the Adafruit library and driver bundle <https://circuitpython.org/libraries>`_
-or individual libraries can be installed using
-`circup <https://github.com/adafruit/circup>`_.
+* Sony family: DualSense (PS5), DualShock 4 (PS4), DualShock 3 (PS3)
+* Nintendo family: Switch gamepads, Switch JoyCons, Wii, Wii U
+* Xbox One S
+* Android gamepads
+* Window gamepads
+* and more
+
+For a complete list, see: https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/docs/supported_gamepads.md
+
 
 How does it work
 ================
 
 As mentioned above, only boards with the AirLift (ESP32) co-processor are supported.
-This is because the project is split in two:
+This is because the project consists of two parts:
 
 * "Bluepad32 library for CircuitPython", runs on the main processor: "C"
 * "Bluepad32 firmware", runs on the AirLift co-processor: "B"
@@ -56,6 +62,20 @@ Info about Bluepad32 firmware is avaiable here:
 
 * Bluepad32 firmware doc: https://gitlab.com/ricardoquesada/bluepad32/-/blob/master/docs/plat_airlift.md
 * Download: https://gitlab.com/ricardoquesada/bluepad32/-/releases
+
+Dependencies
+============
+
+This driver depends on:
+
+* `Adafruit ESP32SPI <https://github.com/adafruit/Adafruit_CircuitPython_ESP32SPI>`_
+
+Please ensure all dependencies are available on the CircuitPython filesystem.
+This is easily achieved by downloading
+`the Adafruit library and driver bundle <https://circuitpython.org/libraries>`_
+or individual libraries can be installed using
+`circup <https://github.com/adafruit/circup>`_.
+
 
 
 Installing to a Connected CircuitPython Device with Circup
