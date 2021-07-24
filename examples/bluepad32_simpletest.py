@@ -15,7 +15,7 @@ gamepad = None
 
 # Callback that will be called once a gamepad is connected
 def on_connect(gp):
-    global gamepad
+    global gamepad  # pylint: disable=global-statement
     gamepad = gp
 
     print("on_connect: ", gp)
@@ -25,7 +25,7 @@ def on_connect(gp):
 
 # Callback that will be called when a gamepad is disconnected
 def on_disconnect(gp):
-    global gamepad
+    global gamepad  # pylint: disable=global-statement
     gamepad = None
     print("on_disconnect: ", gp)
 
