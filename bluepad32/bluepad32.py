@@ -116,8 +116,6 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
         if connected_gamepads == self._prev_connected_gamepads:
             return
 
-        print("there is a change")
-
         for idx in range(_MAX_GAMEPADS):
             bit = 1 << idx
             current = connected_gamepads & bit
@@ -128,10 +126,8 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
                 continue
 
             if current != 0:
-                print("there is a change: new gamepad")
                 self._on_connect(self._gamepads[idx])
             else:
-                print("there is a change: disconnected")
                 self._on_disconnect(self._gamepads[idx])
         self._prev_connected_gamepads = connected_gamepads
 
