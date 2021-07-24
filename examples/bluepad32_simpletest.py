@@ -19,8 +19,8 @@ def on_connect(gp):
     gamepad = gp
 
     print("on_connect: ", gp)
-    # Change ligthbar to Green
-    gp.set_lightbar_color((0x00, 0xFF, 0xFF))
+    # Change ligthbar to Green: Red, Green, Blue
+    gp.set_lightbar_color((0x00, 0xFF, 0x00))
 
 
 # Callback that will be called when a gamepad is disconnected
@@ -58,31 +58,30 @@ bp32.setup_callbacks(on_connect, on_disconnect)
 # Should display "Bluepad32 for Airlift vXXX"
 print("Firmware version:", bp32.firmware_version)
 
+color = [0xFF, 0x00, 0x00]
+players_led = 0x01
+
 while True:
-    color = [0xFF, 0x00, 0x00]
-    players_led = 0x01
+    # Fetches data from Bluepad32 firmware, triggers callbaks, and more.
+    # Must be called once per frame.
+    bp32.update()
 
-    while True:
-        # Fetches data from Bluepad32 firmware, triggers callbaks, and more.
-        # Must be called once per frame.
-        bp32.update()
+    if gamepad is None:
+        continue
 
-        if gamepad is None:
-            continue
+    if gamepad.button_a:  # button A pressed ?
+        # Shuffle colors. "random.shuffle" not preset in CircuitPython
+        color = (color[2], color[0], color[1])
+        gamepad.set_lightbar_color(color)
 
-        if gamepad.button_a:  # button A pressed ?
-            # Shuffle colors. "random.shuffle" not preset in CircuitPython
-            color = (color[2], color[0], color[1])
-            gamepad.set_lightbar_color(color)
+    if gamepad.button_b:  # Button B pressed ?
+        gamepad.set_player_leds(players_led)
+        players_led += 1
+        players_led &= 0x0F
 
-        if gamepad.button_b:  # Button B pressed ?
-            gamepad.set_player_leds(players_led)
-            players_led += 1
-            players_led &= 0x0F
+    if gamepad.button_x:  # Button X pressed ?
+        force = 128  # 0-255
+        duration = 10  # 0-255
+        gamepad.set_rumble(force, duration)
 
-        if gamepad.button_x:  # Button X pressed ?
-            force = 128  # 0-255
-            duration = 10  # 0-255
-            gamepad.set_rumble(force, duration)
-
-        time.sleep(0.032)
+    time.sleep(0.032)
