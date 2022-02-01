@@ -107,6 +107,10 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
                 "type": unp[10],
             }
 
+            # Sanity check.
+            if state["idx"] < 0 or state["idx"] >= len(self._gamepads):
+                return;
+
             self._gamepads[state["idx"]].set_state(state)
 
             # Update connected gamepads bitmask
