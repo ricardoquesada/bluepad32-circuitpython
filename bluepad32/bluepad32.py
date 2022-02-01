@@ -109,7 +109,7 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
 
             # Sanity check.
             if state["idx"] < 0 or state["idx"] >= len(self._gamepads):
-                return;
+                return
 
             self._gamepads[state["idx"]].set_state(state)
 
