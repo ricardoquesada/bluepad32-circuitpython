@@ -46,6 +46,7 @@ _SET_GAMEPAD_PLAYER_LEDS = const(0x02)
 _SET_GAMEPAD_LIGHTBAR_COLOR = const(0x03)
 _SET_GAMEPAD_RUMBLE = const(0x04)
 _FORGET_BLUETOOTH_KEYS = const(0x05)
+_GET_CONTROLLERS_DATA = const(0x09)
 
 _MAX_GAMEPADS = const(4)
 
@@ -85,26 +86,27 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
 
         :returns: List of connected gamepads.
         """
-        self._send_command(_GET_GAMEPADS_DATA)
-        resp = self._wait_response_cmd(_GET_GAMEPADS_DATA)
+        self._send_command(_GET_CONTROLLERS_DATA)
+        resp = self._wait_response_cmd(_GET_CONTROLLERS_DATA)
 
         connected_gamepads = 0
 
         # Update gamepads state
         for g in resp:
-            unp = struct.unpack("<BBiiiiiiHBB", g)
+            unp = struct.unpack("<BBBiiiiiiHBB", g)
             state = {
                 "idx": unp[0],
-                "dpad": unp[1],
-                "axis_x": unp[2],
-                "axis_y": unp[3],
-                "axis_rx": unp[4],
-                "axis_ry": unp[5],
-                "brake": unp[6],
-                "accelerator": unp[7],
-                "buttons": unp[8],
-                "misc_buttons": unp[9],
-                "type": unp[10],
+                "class": unp[1],
+                "dpad": unp[2],
+                "axis_x": unp[3],
+                "axis_y": unp[4],
+                "axis_rx": unp[5],
+                "axis_ry": unp[6],
+                "brake": unp[7],
+                "accelerator": unp[8],
+                "buttons": unp[9],
+                "misc_buttons": unp[10],
+                "battery": unp[11],
             }
 
             # Sanity check.

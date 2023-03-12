@@ -84,4 +84,6 @@ while True:
         duration = 10  # 0-255
         gamepad.set_rumble(force, duration)
 
+    print(gamepad)
+
     time.sleep(0.032)
