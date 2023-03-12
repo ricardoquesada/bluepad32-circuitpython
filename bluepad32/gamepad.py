@@ -1,4 +1,4 @@
-# Copyright 2020 - 2021, Ricardo Quesada, http://retro.moe
+# Copyright 2020 - 2023, Ricardo Quesada, http://retro.moe
 # SPDX-License-Identifier: Apache-2.0
 
 # Bluepad32 support for CircuitPython.

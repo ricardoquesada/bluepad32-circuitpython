@@ -33,9 +33,10 @@ Supports, most if not all, modern Bluetooth gamepads like:
 
 * Sony family: DualSense (PS5), DualShock 4 (PS4), DualShock 3 (PS3)
 * Nintendo family: Switch gamepads, Switch JoyCons, Wii, Wii U
-* Xbox One S
+* Xbox Wireless
 * Android gamepads
 * Window gamepads
+* 8BitDo controllers
 * and more
 
 For a complete list, see: https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/docs/supported_gamepads.md
