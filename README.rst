@@ -138,6 +138,7 @@ Usage Example
 
 
     # If you are using a board with pre-defined ESP32 Pins:
+    
     esp32_cs = DigitalInOut(board.ESP_CS)
     esp32_ready = DigitalInOut(board.ESP_BUSY)
     esp32_reset = DigitalInOut(board.ESP_RESET)
@@ -145,6 +146,15 @@ Usage Example
     spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
     bp32 = Bluepad32(spi, esp32_cs, esp32_ready, esp32_reset, debug=0)
     bp32.setup_callbacks(on_connect, on_disconnect)
+
+    # For Arduino Nano RP2040 connect the pins will be:
+    # esp32_cs = DigitalInOut(board.CS1)
+    # esp32_ready = DigitalInOut(board.ESP_BUSY)
+    # esp32_reset = DigitalInOut(board.ESP_RESET)
+
+    # spi = busio.SPI(board.SCK1, board.MOSI1, board.MISO1)
+    # bp32 = Bluepad32(spi, esp32_cs, esp32_ready, esp32_reset, debug=0)
+    # bp32.setup_callbacks(on_connect, on_disconnect)
 
     # Should display "Bluepad32 for Airlift vXXX"
     print("Firmware version:", bp32.firmware_version)

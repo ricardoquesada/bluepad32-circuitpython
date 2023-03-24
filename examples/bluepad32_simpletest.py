@@ -51,6 +51,15 @@ esp32_reset = DigitalInOut(board.ESP_RESET)
 # esp32_ready = DigitalInOut(board.D9)
 # esp32_reset = DigitalInOut(board.D6)
 
+# For Arduino Nano RP2040 connect the pins will be:
+# esp32_cs = DigitalInOut(board.CS1)
+# esp32_ready = DigitalInOut(board.ESP_BUSY)
+# esp32_reset = DigitalInOut(board.ESP_RESET)
+
+# spi = busio.SPI(board.SCK1, board.MOSI1, board.MISO1)
+# bp32 = Bluepad32(spi, esp32_cs, esp32_ready, esp32_reset, debug=0)
+# bp32.setup_callbacks(on_connect, on_disconnect)
+
 spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
 bp32 = Bluepad32(spi, esp32_cs, esp32_ready, esp32_reset, debug=0)
 bp32.setup_callbacks(on_connect, on_disconnect)
