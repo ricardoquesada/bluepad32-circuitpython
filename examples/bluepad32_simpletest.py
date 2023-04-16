@@ -61,7 +61,7 @@ bp32.setup_callbacks(on_connect, on_disconnect)
 
 # Should display "Bluepad32 for Airlift vXXX"
 print("Firmware version:", bp32.firmware_version)
-print("MAC addr:", [hex(i) for i in bp32.MAC_address])
+print("BT addr:", [hex(i) for i in bp32.MAC_address])
 
 color = [0xFF, 0x00, 0x00]
 players_led = 0x01
