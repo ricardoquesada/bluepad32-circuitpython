@@ -18,6 +18,7 @@ Introduction
 Enables gamepad support for CircuitPython. Requires a board with an AirLift (ESP32) module,
 like:
 
+* `Adafruit Metro M7 RT1011 with AirLift <https://www.adafruit.com/product/4950>`_
 * `Adafruit MatrixPortal M4 <https://www.adafruit.com/product/4745>`_
 * `Adafruit Metro M4 Express AirLift <https://www.adafruit.com/product/4000>`_
 * `Adafruit PyPortal <https://www.adafruit.com/product/4116>`_
@@ -33,7 +34,9 @@ Supports, most if not all, modern Bluetooth gamepads like:
 
 * Sony family: DualSense (PS5), DualShock 4 (PS4), DualShock 3 (PS3)
 * Nintendo family: Switch gamepads, Switch JoyCons, Wii, Wii U
-* Xbox Wireless
+* Xbox Wireless family: models 1708, 1914, adaptive
+* Steam controller
+* Stadia controller
 * Android gamepads
 * Window gamepads
 * 8BitDo controllers
