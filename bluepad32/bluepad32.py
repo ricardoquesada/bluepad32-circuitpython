@@ -93,7 +93,7 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
 
         # Update gamepads state
         for g in resp:
-            unp = struct.unpack("<BBBiiiiiiHBB", g)
+            unp = struct.unpack("<BBBiiiiiiHBiiiiiiB", g)
             state = {
                 "idx": unp[0],
                 "class": unp[1],
@@ -103,10 +103,16 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
                 "axis_rx": unp[5],
                 "axis_ry": unp[6],
                 "brake": unp[7],
-                "accelerator": unp[8],
+                "throttle": unp[8],
                 "buttons": unp[9],
                 "misc_buttons": unp[10],
-                "battery": unp[11],
+                "gyro_x": unp[11],
+                "gyro_y": unp[12],
+                "gyro_z": unp[13],
+                "accel_x": unp[14],
+                "accel_y": unp[15],
+                "accel_z": unp[16],
+                "battery": unp[17],
             }
 
             # Sanity check.

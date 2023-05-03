@@ -153,6 +153,70 @@ class Gamepad:  # pylint: disable=too-many-public-methods
         return self._state["axis_ry"]
 
     @property
+    def brake(self) -> int:
+        """Return the value of the Brake.
+
+        Value goes from 0 to 1023.
+        """
+        return self._state["brake"]
+
+    @property
+    def throttle(self) -> int:
+        """Return the value of the Throttle.
+
+        Value goes from 0 to 1023.
+        """
+        return self._state["throttle"]
+
+    @property
+    def gyro_x(self) -> int:
+        """Return the value of Gyroscope X.
+
+        Value goes from -511 to 512.
+        """
+        return self._state["gyro_x"]
+
+    @property
+    def gyro_y(self) -> int:
+        """Return the value of Gyroscope Y.
+
+        Value goes from -511 to 512.
+        """
+        return self._state["gyro_y"]
+
+    @property
+    def gyro_z(self) -> int:
+        """Return the value of Gyroscope Z.
+
+        Value goes from -511 to 512.
+        """
+        return self._state["gyro_z"]
+
+    @property
+    def accel_x(self) -> int:
+        """Return the value of Accelerometer X.
+
+        Value goes from -511 to 512.
+        """
+        return self._state["accel_x"]
+
+    @property
+    def accel_y(self) -> int:
+        """Return the value of Accelerometer Y.
+
+        Value goes from -511 to 512.
+        """
+        return self._state["accel_y"]
+
+    @property
+    def accel_z(self) -> int:
+        """Return the value of Accelerometer Z.
+
+        Value goes from -511 to 512.
+        """
+        return self._state["accel_z"]
+
+    @property
     def dpad(self) -> int:
         """Return the DPAD state"""
         return self._state["dpad"]
