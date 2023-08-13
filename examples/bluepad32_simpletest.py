@@ -102,6 +102,6 @@ while True:
         enable_bt_connections = not enable_bt_connections
         # Quick hack: prevent pressing it multiple times
         time.sleep(0.2)
-    # print(gamepad)
+    print(gamepad)
 
     time.sleep(0.032)

@@ -240,8 +240,8 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
         if ver_hi != _PROTOCOL_VERSION_HI:
             ver_lo = resp[0][1]
             print(
-                f"ERROR: Invalid protocol version."
-                f"Expected {_PROTOCOL_VERSION_HI}.{_PROTOCOL_VERSION_LO}, got: {ver_hi}.{ver_lo}"
+                "ERROR: Invalid protocol version. "
+                + f"Expected {_PROTOCOL_VERSION_HI}.{_PROTOCOL_VERSION_LO}, got: {ver_hi}.{ver_lo}"
             )
             return False
         return True
