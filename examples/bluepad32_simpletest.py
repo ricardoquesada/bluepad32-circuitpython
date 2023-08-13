@@ -65,6 +65,7 @@ print("BT addr:", [hex(i) for i in bp32.MAC_address])
 
 color = [0xFF, 0x00, 0x00]
 players_led = 0x01
+enable_bt_connections = False
 
 while True:
     # Fetches data from Bluepad32 firmware, triggers callbaks, and more.
@@ -78,17 +79,29 @@ while True:
         # Shuffle colors. "random.shuffle" not preset in CircuitPython
         color = (color[2], color[0], color[1])
         gamepad.set_lightbar_color(color)
+        # Quick hack: prevent pressing it multiple times
+        time.sleep(0.2)
 
     if gamepad.button_b:  # Button B pressed ?
         gamepad.set_player_leds(players_led)
         players_led += 1
         players_led &= 0x0F
+        # Quick hack: prevent pressing it multiple times
+        time.sleep(0.2)
 
     if gamepad.button_x:  # Button X pressed ?
         force = 128  # 0-255
         duration = 10  # 0-255
         gamepad.set_rumble(force, duration)
 
-    print(gamepad)
+    if gamepad.button_y:  # Button Y pressed ?
+        bp32.enable_bluetooth_connections(enable_bt_connections)
+        msg = "enabled" if enable_bt_connections else "disabled"
+        print(f"Bluetooth connections are {msg}")
+
+        enable_bt_connections = not enable_bt_connections
+        # Quick hack: prevent pressing it multiple times
+        time.sleep(0.2)
+    # print(gamepad)
 
     time.sleep(0.032)

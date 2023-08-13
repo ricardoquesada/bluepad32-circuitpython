@@ -212,7 +212,7 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
         resp = self._send_command_get_response(_FORGET_BLUETOOTH_KEYS)
         return resp[0][0] == 1
 
-    def enable_new_bluetooth_connections(self, enabled: bool) -> bool:
+    def enable_bluetooth_connections(self, enabled: bool) -> bool:
         """
         Enable / Disable new Bluetooth connections.
 
@@ -223,7 +223,7 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
         :return: True if the request was successful, False otherwise.
         """
         resp = self._send_command_get_response(
-            _ENABLE_BLUETOOTH_CONNECTIONS, ((enabled),)
+            _ENABLE_BLUETOOTH_CONNECTIONS, ((bool(enabled),),)
         )
         return resp[0][0] == 1
 
@@ -237,11 +237,11 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
     def _check_protocol(self) -> bool:
         resp = self._send_command_get_response(_GET_PROTOCOL_VERSION)
         ver_hi = resp[0][0]
-        ver_lo = resp[0][1]
         if ver_hi != _PROTOCOL_VERSION_HI:
+            ver_lo = resp[0][1]
             print(
-                "ERROR: Invalid protocol version. Expected %d.%d, got: %d.%d"
-                % (_PROTOCOL_VERSION_HI, _PROTOCOL_VERSION_LO, ver_hi, ver_lo)
+                f"ERROR: Invalid protocol version."
+                f"Expected {_PROTOCOL_VERSION_HI}.{_PROTOCOL_VERSION_LO}, got: {ver_hi}.{ver_lo}"
             )
             return False
         return True
