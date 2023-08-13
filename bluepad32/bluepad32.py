@@ -46,6 +46,7 @@ _SET_GAMEPAD_PLAYER_LEDS = const(0x02)
 _SET_GAMEPAD_LIGHTBAR_COLOR = const(0x03)
 _SET_GAMEPAD_RUMBLE = const(0x04)
 _FORGET_BLUETOOTH_KEYS = const(0x05)
+_ENABLE_BLUETOOTH_CONNECTIONS = const(0x07)
 _GET_CONTROLLERS_DATA = const(0x09)
 
 _MAX_GAMEPADS = const(4)
@@ -209,6 +210,21 @@ class Bluepad32(adafruit_esp32spi.ESP_SPIcontrol):
         :return: True if the request was successful, False otherwise.
         """
         resp = self._send_command_get_response(_FORGET_BLUETOOTH_KEYS)
+        return resp[0][0] == 1
+
+    def enable_new_bluetooth_connections(self, enabled: bool) -> bool:
+        """
+        Enable / Disable new Bluetooth connections.
+
+        When enabled, the device is put in Discovery mode, and new pairings are
+        accepted. When disabled, only devices that have paired before can connect.
+        Established connections are not affected.
+
+        :return: True if the request was successful, False otherwise.
+        """
+        resp = self._send_command_get_response(
+            _ENABLE_BLUETOOTH_CONNECTIONS, ((enabled),)
+        )
         return resp[0][0] == 1
 
     def setup_callbacks(self, on_connect, on_disconnect) -> None:
