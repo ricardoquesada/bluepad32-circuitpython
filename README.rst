@@ -42,7 +42,7 @@ Supports, most if not all, modern Bluetooth gamepads like:
 * 8BitDo controllers
 * and more
 
-For a complete list, see: https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/docs/supported_gamepads.md
+For a complete list, see: https://bluepad32.readthedocs.io/en/latest/supported_gamepads/
 
 
 How does it work
@@ -68,8 +68,8 @@ This is a simple step that needs to be done just once, and can be undone at any 
 Info about Bluepad32 firmware is available here:
 
 
-* Bluepad32 firmware doc: https://gitlab.com/ricardoquesada/bluepad32/-/blob/master/docs/plat_airlift.md
-* Download: https://gitlab.com/ricardoquesada/bluepad32/-/releases
+* Bluepad32 firmware doc: https://bluepad32.readthedocs.io/en/latest/plat_airlift/
+* Download: https://github.com/ricardoquesada/bluepad32/releases
 
 Dependencies
 ============
